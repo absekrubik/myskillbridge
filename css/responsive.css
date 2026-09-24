@@ -1,0 +1,271 @@
+/* ==========================================================================
+   responsive.css — breakpoints (desktop-first)
+   1200 large laptop · 1024 tablet landscape (hamburger nav)
+   900 tablet portrait · 640 mobile · 400 small mobile
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .job-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .industry-grid { grid-template-columns: repeat(3, 1fr); }
+  .float-card--job { left: 2%; }
+  .float-card--match { right: 2%; }
+}
+
+/* ---------------- Hamburger navigation ---------------- */
+@media (max-width: 1240px) {
+  .nav-toggle { display: inline-grid; }
+  .primary-nav {
+    position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; z-index: 99;
+    flex-direction: column; align-items: stretch; gap: 0; padding: 16px 24px 32px;
+    background: #fff; border-top: 1px solid var(--border); overflow-y: auto;
+    visibility: hidden; opacity: 0; transform: translateY(-8px);
+    transition: opacity .2s, transform .2s var(--ease), visibility 0s .2s;
+  }
+  .nav-open .primary-nav { visibility: visible; opacity: 1; transform: none; transition: opacity .2s, transform .2s var(--ease); }
+  .nav-open { overflow: hidden; }
+  .nav-list { flex-direction: column; gap: 0; }
+  .nav-list .nav-link { display: flex; width: 100%; padding: 16px 4px; font-size: 1.1rem; border-bottom: 1px solid var(--border); border-radius: 0; }
+  .nav-link[aria-current="page"]::after { left: auto; right: 4px; top: 50%; bottom: auto; width: 8px; height: 8px; border-radius: 50%; transform: translateY(-50%); }
+  .nav-actions { margin: 24px 0 0; flex-direction: column; align-items: stretch; gap: 12px; }
+  .nav-auth { justify-content: stretch; gap: 10px; }
+  .nav-auth .nav-link { flex: 1; justify-content: center; border: 1px solid var(--border-strong); border-radius: 12px; min-height: 48px; }
+  .nav-actions .btn { width: 100%; --h: 52px; }
+
+  .primary-nav .nav-list { margin-inline: 0; }
+}
+
+/* ---------------- Tablet landscape ---------------- */
+@media (max-width: 1024px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__title { max-width: 14ch; }
+  .map-panel { max-width: 620px; width: 100%; margin-inline: auto; }
+  .search-form { grid-template-columns: 1fr 1fr; }
+  .search-form .search-field:first-child { grid-column: 1 / -1; }
+  .search-form .btn { grid-column: 1 / -1; }
+  .jobs-hero .search-form { grid-template-columns: 1fr 1fr; }
+
+  .why { grid-template-columns: 1fr; }
+  .why__intro { position: static; }
+  .audience { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+
+  /* Jobs page: filters become a drawer */
+  .jobs-layout { grid-template-columns: 1fr; }
+  .open-filters { display: inline-flex; }
+  .filters { position: fixed; inset: 0; z-index: 250; background: rgba(7,26,61,.5); visibility: hidden; opacity: 0; transition: opacity .2s, visibility 0s .2s; top: 0; }
+  .filters.is-open { visibility: visible; opacity: 1; transition: opacity .2s; }
+  .filters__panel { position: absolute; right: 0; top: 0; bottom: 0; width: min(380px, 100%); max-height: none; border-radius: 0; border: 0; display: flex; flex-direction: column; padding: 0; transform: translateX(100%); transition: transform .25s var(--ease); }
+  .filters.is-open .filters__panel { transform: none; }
+  .filters__head { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .filters__body { flex: 1; overflow-y: auto; padding: 0 20px; }
+  .filters__close { display: inline-grid; }
+  .filters__foot { display: flex; gap: 10px; padding: 16px 20px; border-top: 1px solid var(--border); }
+  .filters__foot .btn { flex: 1; }
+
+  .detail-layout { grid-template-columns: 1fr; gap: 0; }
+  .detail-aside { position: static; order: -1; margin-bottom: 40px; }
+  .detail-hero__grid { grid-template-columns: 1fr; }
+  .detail-hero__actions { justify-content: flex-start; max-width: none; }
+  .detail-hero__posted { text-align: left; }
+
+  /* Dashboard sidebar becomes a drawer */
+  .dash { grid-template-columns: 1fr; }
+  .dash-sidebar { position: fixed; top: 0; left: 0; bottom: 0; height: 100vh; width: min(300px, 86%); z-index: 260; transform: translateX(-100%); transition: transform .25s var(--ease); box-shadow: var(--shadow-lg); }
+  .dash-sidebar.is-open { transform: none; }
+  .dash-sidebar.is-open + .dash-scrim { display: block; }
+  .dash-scrim { display: none; position: fixed; inset: 0; z-index: 255; background: rgba(7,26,61,.5); border: 0; }
+  .dash-sidebar__close { display: inline-grid; margin-left: auto; }
+  .dash-menu { display: inline-flex; }
+  .dash-welcome { grid-template-columns: 1fr; }
+  .apps-layout { grid-template-columns: 1fr; }
+  .dash-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .check-tool { grid-template-columns: 1fr; }
+  .tool-intro { position: static; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .auth { grid-template-columns: minmax(0, 1fr); }
+  .auth__aside { display: none; }
+}
+
+/* ---------------- Tablet portrait ---------------- */
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  .steps::before { display: none; }
+  .job-results { grid-template-columns: 1fr; }
+  .section-head--row { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------------- Mobile ---------------- */
+@media (max-width: 640px) {
+  :root { --header-h: 64px; }
+  .container { padding-inline: 18px; }
+  .logo__img { height: 32px; }
+  .logo--footer .logo__img { width: 180px; }
+
+  .hero { padding-top: 32px; }
+  .hero__title { font-size: clamp(2.1rem, 10vw, 2.6rem); }
+  .hero .btn-row .btn { flex: 1 1 100%; }
+  .map-panel { aspect-ratio: 1 / 1; border-radius: var(--r-lg); }
+  .float-card { padding: 9px 10px; gap: 8px; max-width: 190px; }
+  .float-card__icon { width: 30px; height: 30px; }
+  .float-card__title { font-size: .78rem; }
+  .float-card__meta { font-size: .7rem; }
+  .float-card--job { left: 4%; top: 5%; }
+  .float-card--match { right: 4%; bottom: 5%; }
+  .city-label { font-size: 13px; }
+
+  .search-wrap { transform: none; margin-top: 32px; padding-bottom: 8px; }
+  .after-search { padding-top: clamp(64px, 9vw, 112px); }
+  .search-panel { padding: 18px; }
+  .search-form, .jobs-hero .search-form { grid-template-columns: 1fr; }
+
+  .grid-2, .grid-3, .grid-4, .job-grid, .industry-grid, .feature-list, .fit-grid, .apply-steps, .dash-grid-3, .stats { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat { padding: 10px; }
+  .stat__n { font-size: 1.3rem; }
+  .steps { grid-template-columns: 1fr; row-gap: 28px; }
+  .step { display: grid; grid-template-columns: 56px 1fr; column-gap: 18px; padding: 0; }
+  .step__n { margin: 0; grid-row: span 2; }
+  .industry-card { min-height: 0; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 18px; }
+  .industry-card h3 { flex: 1; }
+  .industry-card p { flex-basis: 100%; }
+  .industry-card__count { margin-top: 0; }
+  .audience-card { min-height: 0; }
+  .audience-card .btn-row .btn { flex: 1 1 100%; }
+  .final-cta .btn { width: 100%; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .footer-bottom { flex-direction: column; }
+
+  .form-row { grid-template-columns: 1fr; }
+  .role-option label { padding: 12px; font-size: .92rem; }
+  .role-option label small { display: none; }
+
+  /* Job details: sticky apply bar */
+  .detail-hero__actions { display: none; }
+  .mobile-apply-bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -12px rgba(7,26,61,.2); }
+  .mobile-apply-bar .save-btn { width: 52px; height: 52px; flex: none; }
+  .mobile-apply-bar .btn { --h: 52px; }
+  .page-job-details .site-footer { padding-bottom: 110px; }
+  .info-panel { flex-direction: column; padding: 22px; }
+
+  .results-bar { align-items: stretch; }
+  .results-bar .sort { flex: 1; }
+  .results-bar .sort select { flex: 1; }
+  .open-filters { flex: 1; }
+
+  /* Dashboard: app rows become stacked cards */
+  .app-row { grid-template-columns: 1fr auto; row-gap: 10px; }
+  .app-row .btn { grid-column: 1 / -1; }
+  .completion { flex-direction: column; align-items: flex-start; }
+  .timeline-card { padding: 20px; }
+  .timeline-card__head { flex-direction: column; }
+  .demo-controls__btns .btn { flex: 1 1 auto; }
+  .modal__actions .btn { flex: 1 1 100%; }
+  .toast-region { bottom: 88px; }
+  .cv-current { flex-wrap: wrap; }
+}
+
+@media (max-width: 400px) {
+  .container { padding-inline: 16px; }
+  .logo__img { height: 28px; }
+  .float-card--match { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 340px) {
+  .container { padding-inline: 14px; }
+  .logo__img { height: 24px; }
+}
+
+/* ---------------- Header: wider container so the full logo + nav fit ---------------- */
+.site-header .container { max-width: 1360px; }
+@media (min-width: 1241px) and (max-width: 1399px) {
+  .logo__img { height: 32px; }
+  .header-inner { gap: 14px; }
+  .nav-link { padding: 8px 8px; font-size: .9rem; }
+  .nav-link[aria-current="page"]::after, .nav-list .nav-link::before { left: 8px; right: 8px; }
+}
+
+/* ---------------- Small phones ---------------- */
+@media (max-width: 400px) {
+  .welcome-card { padding: 22px; }
+  .stats { grid-template-columns: 1fr; gap: 8px; }
+  .stat { display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; }
+  .stat__n { font-size: 1.25rem; }
+  .btn { white-space: normal; text-align: center; }
+}
+
+/* ---------------- Tablet refinements ---------------- */
+@media (max-width: 1024px) {
+  .jobs-hero .search-form .search-field:nth-child(2) { grid-column: 1 / -1; }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  .job-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .site-footer { padding-bottom: 88px; }
+  .footer-bottom ul { flex-wrap: wrap; gap: 8px 18px; }
+}
+
+/* ---------------- Dashboards (candidate + employer) ---------------- */
+@media (max-width: 1280px) {
+  .welcome-card--wide { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .dash { grid-template-columns: 232px minmax(0, 1fr); }
+  .dash-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .apps-layout { grid-template-columns: 280px minmax(0, 1fr); }
+}
+@media (max-width: 1100px) {
+  .dash-cols { grid-template-columns: 1fr; }
+  .dash-cols .panel + .panel { margin-top: 20px; }
+}
+@media (max-width: 1024px) {
+  .dash-main { padding-top: 20px; }
+  #applicant-list { max-height: none; overflow: visible; }
+  .stats--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .dash-main { padding-inline: 16px; }
+  .dash-top h1 { flex-basis: 100%; order: 3; }
+  .dash-top__cta { margin-left: auto; }
+  .welcome-card { padding: 22px; }
+  .welcome-card h2 { font-size: 1.35rem; }
+  .panel { padding: 18px; }
+  .post-grid, .emp-grid { grid-template-columns: 1fr; }
+  .pipeline__row { grid-template-columns: 110px minmax(0, 1fr) 26px; font-size: .82rem; }
+  .info-grid { grid-template-columns: 1fr; }
+  .toolbar--filters .field--inline { flex: 1 1 100%; }
+  .emp-card__facts { grid-template-columns: 1fr; }
+  .stage-actions .btn, .post-card__actions .btn, .emp-card__actions .btn { flex: 1 1 auto; }
+  .demo-logins { grid-template-columns: 1fr; }
+  .completion { gap: 14px; }
+}
+@media (max-width: 400px) {
+  .stats--4 { grid-template-columns: 1fr; }
+  .seg { width: 100%; }
+  .seg__btn { flex: 1; padding-inline: 8px; }
+}
+
+/* Desktop: keep the sidebar column white all the way down */
+@media (min-width: 1025px) {
+  .dash { background: linear-gradient(90deg, #fff 0, #fff 260px, var(--border) 260px, var(--border) 261px, var(--bg) 261px); }
+  .dash-sidebar { border-right: 0; }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .dash { background: linear-gradient(90deg, #fff 0, #fff 232px, var(--border) 232px, var(--border) 233px, var(--bg) 233px); }
+}
+.applicant-note .btn { width: auto; display: inline-flex; }
+.toolbar--filters .field--inline input, .toolbar--filters .field--inline select { min-height: 48px; height: 48px; }
+@media (min-width: 641px) and (max-width: 1024px) {
+  .app-select-list { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .toolbar--filters .field--inline { flex: 1 1 200px; }
+}
+@media (max-width: 400px) {
+  .results-bar .open-filters, .results-bar .sort { flex: 1 1 100%; }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employer Dashboard | My SkillBridge Recruitment Services</title>
+<meta name="description" content="Post jobs, review applicants, hire and assign employees.">
+<link rel="canonical" href="https://www.example.com/employer-dashboard.html">
+<meta name="theme-color" content="#15639E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="My SkillBridge Recruitment Services">
+<meta property="og:title" content="Employer Dashboard | My SkillBridge Recruitment Services">
+<meta property="og:description" content="Post jobs, review applicants, hire and assign employees.">
+<meta property="og:url" content="https://www.example.com/employer-dashboard.html">
+<meta property="og:image" content="https://www.example.com/assets/images/og-image.png">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script src="js/jobs-data.js" defer></script>
+<script src="js/services.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/employer.js" defer></script>
+</head>
+<body class="">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3.5h12V21l-6-4.2L6 21z"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol><symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 17a7 7 0 0 1 14 0M12 8V6M10 6h4M3 20h18M3 17h18"/></symbol><symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h1M11.5 11h1M15 11h1M8 15h1M11.5 15h1M15 15h1M8 18h1M11.5 18h4.5"/></symbol><symbol id="i-helmet" viewBox="0 0 24 24"><path d="M6 21V3M6 5h14M6 5l4 4M10 5v4M16 5v5M14.5 10h3v2.5h-3zM3 21h8"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/><path d="M8 12h2l1-2 2 4 1-2h2"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3 6"/></symbol><symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 3 7.5 3 7.5H3S6 15 6 9zM10 20a2 2 0 0 0 4 0"/></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4 2v-7z"/></symbol><symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-3.5H14V7.5c0-1 .4-1.8 1.9-1.8H18V2.6A25 25 0 0 0 15.4 2.5C12.8 2.5 11 4 11 7v2.5H8V13h3v8"/></symbol><symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10.5V17M8 7.2v.01M12 17v-6.5M12 13.5a2.5 2.5 0 0 1 5 0V17"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h13v-4"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol><symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 8l-4 4 4 4M6 12h10"/></symbol><symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.2c-.5-.9-1.6-1.5-3-1.5-1.7 0-3 .8-3 2 0 2.8 6 1.5 6 4.5 0 1.2-1.3 2-3 2-1.4 0-2.6-.6-3-1.6M12 6v1.7M12 16.2V18"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="3.5" rx="1"/><path d="M9 12h6M9 16h4"/></symbol><symbol id="i-message" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></symbol><symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 18h20M5 18v-6.5M19 18v-6.5M2 12c3.5-5 16.5-5 20 0M9 18v-5.3M15 18v-5.3M12 18V9.3"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol></svg>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo logo--header" href="index.html" aria-label="My SkillBridge home"><img class="logo__img" src="assets/logo/logo-horizontal.png" width="706" height="85" alt="My SkillBridge Recruitment Services"></a>
+    <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+      <svg class="icon icon-open" aria-hidden="true" focusable="false"><use href="#i-menu"></use></svg><svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg>
+    </button>
+    <nav class="primary-nav" id="primary-menu" aria-label="Main">
+      <ul class="nav-list"><li><a class="nav-link" href="jobs.html">Jobs</a></li><li><a class="nav-link" href="how-it-works.html">How It Works</a></li><li><a class="nav-link" href="candidates.html">For Candidates</a></li><li><a class="nav-link" href="employers.html">For Employers</a></li><li><a class="nav-link" href="resources.html">Resources</a></li><li><a class="nav-link" href="about.html">About Us</a></li></ul>
+      <div class="nav-actions">
+        <div class="nav-auth" data-auth-slot>
+          <a class="nav-link" href="login.html">Log in</a>
+          <a class="nav-link" href="register.html">Register</a>
+        </div>
+        <a class="btn btn--primary btn--sm" href="jobs.html">Find jobs</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="gate" id="dash-gate" hidden>
+  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>
+  <h1 style="font-size:2rem">Employer dashboard</h1>
+  <p class="muted" id="gate-text">Log in with an employer account to post jobs, review applicants and assign new employees. Or explore with sample data.</p>
+  <div class="btn-row"><a class="btn btn--primary" href="login.html?next=employer-dashboard.html">Log in</a>
+    <button class="btn btn--ghost" type="button" id="gate-demo">Explore demo employer</button></div>
+</div>
+
+<div class="dash dash--employer" id="dashboard" hidden>
+  <aside class="dash-sidebar" id="dash-sidebar" aria-label="Employer dashboard">
+    <div class="dash-user">
+      <span class="avatar avatar--company" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg></span>
+      <div><p class="dash-user__name" data-company-name></p><p class="dash-user__email" data-user-email></p></div>
+      <button type="button" class="icon-btn dash-sidebar__close" data-close-sidebar aria-label="Close menu"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg></button>
+    </div>
+    <nav aria-label="Dashboard sections"><ul class="dash-nav"><li><a href="#overview" data-view-link="overview" data-title="Employer dashboard"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-grid"></use></svg>Dashboard</a></li><li><a href="#jobs" data-view-link="jobs" data-title="My job posts"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-briefcase"></use></svg>My Job Posts</a></li><li><a href="#post" data-view-link="post" data-title="Post a job"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"></use></svg>Post a Job</a></li><li><a href="#applicants" data-view-link="applicants" data-title="Applicants"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"></use></svg>Applicants<span class="count count--soft" data-new-applicants hidden>0</span></a></li><li><a href="#employees" data-view-link="employees" data-title="Assign employees"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg>Assign Employees<span class="count count--warn" data-unassigned hidden>0</span></a></li><li><a href="#company" data-view-link="company" data-title="Company profile"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>Company Profile</a></li><li><a href="#notifications" data-view-link="notifications" data-title="Notifications"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bell"></use></svg>Notifications<span class="count" data-unread hidden>0</span></a></li><li><a href="#settings" data-view-link="settings" data-title="Settings"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-settings"></use></svg>Settings</a></li><li><a href="jobs.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg>View public jobs</a></li>
+      <li><button type="button" class="nav-link" data-logout style="width:100%;padding:10px 12px;gap:12px"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-logout"></use></svg>Log out</button></li></ul></nav>
+  </aside>
+  <button class="dash-scrim" type="button" data-close-sidebar aria-label="Close menu" tabindex="-1"></button>
+
+  <div class="dash-main">
+    <div class="dash-top">
+      <button type="button" class="btn btn--ghost btn--sm dash-menu" id="dash-menu" aria-controls="dash-sidebar" aria-expanded="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu"></use></svg>Menu</button>
+      <h1 id="dash-view-title">Employer dashboard</h1>
+      <a class="btn btn--primary btn--sm dash-top__cta" href="#post" data-new-job><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"></use></svg>Post a job</a>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section data-view="overview" aria-labelledby="dash-view-title">
+      <div class="welcome-card welcome-card--wide">
+        <div>
+          <h2>Welcome back, <span data-user-name></span></h2>
+          <p>Here's how hiring is going at <strong data-company-name></strong>.</p>
+        </div>
+        <div class="stats stats--4">
+          <div class="stat"><span class="stat__n" id="st-jobs">0</span><span class="stat__l">Open jobs</span></div>
+          <div class="stat"><span class="stat__n" id="st-apps">0</span><span class="stat__l">Applicants</span></div>
+          <div class="stat"><span class="stat__n" id="st-interview">0</span><span class="stat__l">In interview</span></div>
+          <div class="stat"><span class="stat__n" id="st-hired">0</span><span class="stat__l">Hired</span></div>
+        </div>
+      </div>
+      <div class="dash-cols">
+        <div class="panel">
+          <div class="panel__head"><h2>Hiring pipeline</h2><a class="link-btn" href="#applicants">Review applicants</a></div>
+          <ul class="pipeline" id="pipeline"></ul>
+        </div>
+        <div class="panel">
+          <div class="panel__head"><h2>Waiting for assignment</h2><a class="link-btn" href="#employees">Assign</a></div>
+          <ul class="mini-list" id="unassigned-list"></ul>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel__head"><h2>Latest applicants</h2><a class="link-btn" href="#applicants">View all</a></div>
+        <ul class="app-list" id="recent-applicants"></ul>
+      </div>
+      <div class="panel">
+        <div class="panel__head"><h2>Your job posts</h2><a class="link-btn" href="#jobs">Manage</a></div>
+        <div class="post-grid" id="overview-jobs"></div>
+      </div>
+    </section>
+
+    <!-- JOBS -->
+    <section data-view="jobs" hidden aria-labelledby="dash-view-title">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Filter job posts">
+          <button type="button" class="seg__btn is-active" data-job-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="seg__btn" data-job-filter="open" aria-pressed="false">Open</button>
+          <button type="button" class="seg__btn" data-job-filter="closed" aria-pressed="false">Closed</button>
+        </div>
+        <a class="btn btn--primary btn--sm" href="#post" data-new-job><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"></use></svg>Post a job</a>
+      </div>
+      <div class="post-grid" id="job-posts"></div>
+    </section>
+
+    <!-- POST / EDIT JOB -->
+    <section data-view="post" hidden aria-labelledby="dash-view-title">
+      <form class="panel form-panel" id="job-form" novalidate>
+        <input type="hidden" name="id">
+        <div class="panel__head"><h2 id="job-form-title">Job details</h2></div>
+        <div class="field"><label for="j-title">Job title</label><input id="j-title" name="title" type="text" required data-label="job title" placeholder="e.g. Warehouse Supervisor"></div>
+        <div class="form-row"><div class="field"><label for="j-category">Industry</label><select id="j-category" name="category" required data-label="industry"><option value="">Choose</option><option value="ICT">ICT / Technology</option><option value="Hospitality">Hospitality</option><option value="Accounting">Accounting &amp; Finance</option><option value="Construction">Construction &amp; Trades</option><option value="Healthcare">Healthcare &amp; Support</option><option value="Other">Other</option></select></div><div class="field"><label for="j-employment">Employment type</label><select id="j-employment" name="employment" required data-label="employment type"><option value="">Choose</option><option value="Full Time">Full time</option><option value="Part Time">Part time</option><option value="Contract">Contract</option></select></div></div>
+        <div class="form-row">
+          <div class="field"><label for="j-city">City or suburb</label><input id="j-city" name="city" type="text" required data-label="city" placeholder="e.g. Sydney"></div>
+          <div class="field"><label for="j-state">State</label><select id="j-state" name="state" required data-label="state"><option value="">Choose</option><option value="NSW">NSW</option><option value="VIC">VIC</option><option value="QLD">QLD</option><option value="WA">WA</option><option value="SA">SA</option><option value="TAS">TAS</option><option value="ACT">ACT</option><option value="NT">NT</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="j-experienceLevel">Experience</label><select id="j-experienceLevel" name="experienceLevel" required data-label="experience"><option value="">Choose</option><option value="entry">Entry level</option><option value="1-2">1–2 years</option><option value="3-5">3–5 years</option><option value="5+">5+ years</option></select></div>
+          <div class="field"><label for="j-salary">Salary <span class="muted">(optional)</span></label><input id="j-salary" name="salary" type="text" data-label="salary" placeholder="e.g. $75,000 – $85,000 + super"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="j-qual">Qualification <span class="muted">(optional)</span></label><input id="j-qual" name="qualification" type="text" data-label="qualification" placeholder="e.g. Certificate III or equivalent"></div>
+          <div class="field"><label for="j-deadline">Closing date</label><input id="j-deadline" name="deadline" type="date" required data-label="closing date"></div>
+        </div>
+        <div class="field"><label for="j-desc">About the role</label><textarea id="j-desc" name="description" rows="4" required data-label="role description" maxlength="1500"></textarea></div>
+        <div class="form-row">
+          <div class="field"><label for="j-resp">Responsibilities</label><textarea id="j-resp" name="responsibilities" rows="4" data-label="responsibilities" placeholder="One per line"></textarea></div>
+          <div class="field"><label for="j-req">Requirements</label><textarea id="j-req" name="requirements" rows="4" data-label="requirements" placeholder="One per line"></textarea></div>
+        </div>
+        <div class="field"><label for="j-skills">Key skills</label><input id="j-skills" name="skills" type="text" data-label="skills" placeholder="Separate skills with commas"></div>
+        <p class="field__hint">Describe the job criteria only. Don't make promises about visas, sponsorship or migration outcomes.</p>
+        <div class="btn-row">
+          <button class="btn btn--primary" type="submit" id="job-submit"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"></use></svg>Publish job</button>
+          <a class="btn btn--ghost" href="#jobs">Cancel</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- APPLICANTS -->
+    <section data-view="applicants" hidden aria-labelledby="dash-view-title">
+      <div class="toolbar toolbar--filters">
+        <div class="field field--inline"><label for="f-job">Job</label><select id="f-job"><option value="">All jobs</option></select></div>
+        <div class="field field--inline"><label for="f-stage">Stage</label><select id="f-stage"><option value="">All stages</option><option value="0">Application submitted</option><option value="1">Document review</option><option value="2">Employer review</option><option value="3">Interview</option><option value="4">Final decision</option><option value="hired">Hired</option><option value="unsuccessful">Unsuccessful</option></select></div>
+        <div class="field field--inline field--grow"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="Name or skill"></div>
+      </div>
+      <div class="apps-layout">
+        <ul class="app-select-list" id="applicant-list" aria-label="Applicants"></ul>
+        <div id="applicant-detail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- EMPLOYEES -->
+    <section data-view="employees" hidden aria-labelledby="dash-view-title">
+      <p class="muted section-lead">People you've hired appear here. Assign each one to a work site, team and supervisor, and set their start date and shift.</p>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Filter employees">
+          <button type="button" class="seg__btn is-active" data-emp-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="seg__btn" data-emp-filter="unassigned" aria-pressed="false">Unassigned</button>
+          <button type="button" class="seg__btn" data-emp-filter="assigned" aria-pressed="false">Assigned</button>
+        </div>
+      </div>
+      <div class="emp-grid" id="employee-grid"></div>
+    </section>
+
+    <!-- COMPANY -->
+    <section data-view="company" hidden aria-labelledby="dash-view-title">
+      <form class="panel form-panel" id="company-form" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="c-name">Company name</label><input id="c-name" name="companyName" type="text" required data-label="company name"></div>
+          <div class="field"><label for="c-industry">Industry</label><select id="c-industry" name="industry" data-label="industry"><option value="">Choose</option><option value="ICT">ICT / Technology</option><option value="Hospitality">Hospitality</option><option value="Accounting">Accounting &amp; Finance</option><option value="Construction">Construction &amp; Trades</option><option value="Healthcare">Healthcare &amp; Support</option><option value="Other">Other</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="c-contact">Contact person</label><input id="c-contact" name="contactPerson" type="text" required data-label="contact person"></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" data-label="phone"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="c-loc">Head office location</label><input id="c-loc" name="location" type="text" data-label="location" placeholder="e.g. Sydney, NSW"></div>
+          <div class="field"><label for="c-web">Website <span class="muted">(optional)</span></label><input id="c-web" name="website" type="url" data-label="website" placeholder="https://"></div>
+        </div>
+        <div class="field"><label for="c-about">About the company</label><textarea id="c-about" name="about" rows="4" maxlength="1000" data-label="company description"></textarea></div>
+        <button class="btn btn--primary" type="submit">Save company profile</button>
+      </form>
+    </section>
+
+    <!-- NOTIFICATIONS -->
+    <section data-view="notifications" hidden aria-labelledby="dash-view-title">
+      <div class="panel form-panel">
+        <div class="panel__head"><h2>Updates</h2><button class="link-btn" type="button" id="mark-read">Mark all as read</button></div>
+        <ul class="note-list" id="note-list"></ul>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section data-view="settings" hidden aria-labelledby="dash-view-title">
+      <div class="panel form-panel">
+        <div class="panel__head"><h2>Account</h2></div>
+        <p class="muted">Signed in as <strong data-user-email></strong>.</p>
+        <div class="btn-row"><button class="btn btn--ghost" type="button" data-logout><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-logout"></use></svg>Log out</button></div>
+      </div>
+      <div class="panel form-panel">
+        <div class="panel__head"><h2>Demo data</h2></div>
+        <p class="muted">Clear this employer's job posts, applicants, employees and notifications from this browser, then reload the sample data.</p>
+        <button class="btn btn--danger-ghost" type="button" id="reset-demo">Reset demo data</button>
+      </div>
+    </section>
+  </div>
+</div>
+</main>
+
+<button class="back-to-top" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up"></use></svg></button>
+</body>
+</html>
