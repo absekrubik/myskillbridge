@@ -137,7 +137,7 @@ def footer():
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 My SkillBridge Recruitment Services. All rights reserved.</p>
-      <ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul>
+      <ul><li><button type="button" class="motion-toggle" data-motion-toggle aria-pressed="true">Animations: <span data-motion-state>On</span></button></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul>
     </div>
   </div>
 </footer>'''
@@ -147,6 +147,7 @@ def head(filename, title, description):
     url = f"{BASE_URL}/{'' if filename == 'index.html' else filename}"
     return f'''<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{{if(localStorage.getItem("msb_reduce_motion")==="1")document.documentElement.classList.add("reduce-motion")}}catch(e){{}}</script>
 <title>{title}</title>
 <meta name="description" content="{description}">
 <link rel="canonical" href="{url}">

@@ -516,7 +516,7 @@
 
     /* Small celebration when someone is hired (skipped for reduced motion). */
     function celebrate() {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (document.documentElement.classList.contains("reduce-motion")) return;
       const wrap = document.createElement("div");
       wrap.className = "confetti"; wrap.setAttribute("aria-hidden", "true");
       const colors = ["#15639E", "#4BB6F4", "#067647", "#F5B400", "#ffffff"];

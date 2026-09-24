@@ -51,7 +51,8 @@ myskillbridge/
 ├── css/
 │   ├── style.css              Design tokens (top of file) + all components
 │   ├── responsive.css         Breakpoints: 1400 / 1240 / 1200 / 1024 / 900 / 640 / 400
-│   └── animations.css         Keyframes; honours prefers-reduced-motion
+│   └── animations.css         Keyframes + motion; on for every device, footer
+│                              "Animations: On/Off" switch lets visitors turn it off
 │
 ├── js/
 │   ├── jobs-data.js           ★ Sample job data (edit this to add jobs)

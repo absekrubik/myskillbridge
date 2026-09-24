@@ -35,11 +35,10 @@
 .js-reveal [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  .bridge-path { stroke-dashoffset: 0; }
-  .city-pulse { display: none; }
-}
+/* Reduced motion: only when the visitor switches animations off (footer toggle) */
+html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+html.reduce-motion .bridge-path { stroke-dashoffset: 0; }
+html.reduce-motion .city-pulse { display: none; }
 
 /* ==========================================================================
    Site-wide motion layer (added): page entrance, logo, reveal variants,
@@ -129,11 +128,10 @@ main, #main { animation: fade-in .5s ease backwards; }
 @media (min-width: 641px) { .page-job-details .back-to-top { bottom: 20px; } }
 @media (max-width: 640px) { .back-to-top { right: 14px; bottom: 14px; width: 44px; height: 44px; } }
 
-@media (prefers-reduced-motion: reduce) {
-  .final-cta h2 { animation: none; background: none; color: #fff; }
-  .scroll-progress { display: none; }
-  .js-reveal [data-reveal] { transform: none !important; }
-}
+/* Reduced motion: only when the visitor switches animations off (footer toggle) */
+html.reduce-motion .final-cta h2 { animation: none; background: none; color: #fff; }
+html.reduce-motion .scroll-progress { display: none; }
+html.reduce-motion.js-reveal [data-reveal] { transform: none !important; }
 
 /* ---------------- Dashboard motion ---------------- */
 @keyframes view-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -149,7 +147,9 @@ main, #main { animation: fade-in .5s ease backwards; }
 .welcome-card::after { animation: float-y 6s ease-in-out infinite; }
 .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 400; overflow: hidden; }
 .confetti i { position: absolute; top: 0; width: 8px; height: 14px; border-radius: 2px; animation: confetti-fall 1.8s cubic-bezier(.2,.6,.4,1) forwards; }
-@media (prefers-reduced-motion: reduce) { .pipeline__bar { transition: none; } .confetti { display: none; } }
+/* Reduced motion: only when the visitor switches animations off (footer toggle) */
+html.reduce-motion .pipeline__bar { transition: none; }
+html.reduce-motion .confetti { display: none; }
 
 /* ==========================================================================
    Homepage motion
@@ -223,15 +223,24 @@ main, #main { animation: fade-in .5s ease backwards; }
 
 @media (max-width: 900px) { .impact__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 400px) { .impact__item { padding: 18px 8px; } }
-@media (prefers-reduced-motion: reduce) {
-  .hero__orbs, .marquee__track { animation: none !important; }
-  .marquee__track { flex-wrap: wrap; width: auto; justify-content: center; }
-  .marquee { -webkit-mask-image: none; mask-image: none; }
-  .steps[data-inview]::before { transform: none; }
-  .steps[data-inview] .step__n { opacity: 1; }
-  .hero__title .hl::after { transform: none; }
-}
+/* Reduced motion: only when the visitor switches animations off (footer toggle) */
+html.reduce-motion .hero__orbs, html.reduce-motion .marquee__track { animation: none !important; }
+html.reduce-motion .marquee__track { flex-wrap: wrap; width: auto; justify-content: center; }
+html.reduce-motion .marquee { -webkit-mask-image: none; mask-image: none; }
+html.reduce-motion .steps[data-inview]::before { transform: none; }
+html.reduce-motion .steps[data-inview] .step__n { opacity: 1; }
+html.reduce-motion .hero__title .hl::after { transform: none; }
 .rotator { display: inline-grid; height: 1.5em; line-height: 1.5em; vertical-align: middle; min-width: 6.8em; }
 .hero__eyebrow { line-height: 1.5; }
 .impact.after-search { padding-top: calc(clamp(40px, 5vw, 64px) + 70px); padding-bottom: 0; }
 @media (max-width: 640px) { .impact.after-search { padding-top: 48px; } }
+
+/* Footer "Animations: On/Off" switch */
+.motion-toggle { background: none; border: 0; padding: 0; color: #AFC0DF; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.motion-toggle:hover { color: #fff; }
+
+/* Side-slide reveals become vertical on narrow screens so nothing pokes past the edge */
+@media (max-width: 900px) {
+  .js-reveal [data-reveal="left"], .js-reveal [data-reveal="right"] { transform: translateY(16px); }
+}
+html { overflow-x: clip; }

@@ -5,12 +5,33 @@
      and grid children get a small stagger.
    - Scroll progress bar, back-to-top button, smooth same-page anchors.
    - Dashboard stat numbers count up when they change.
-   All motion is disabled for prefers-reduced-motion users.
+   Motion plays on every device. Visitors can switch it off with the
+   "Animations" toggle in the footer (saved in this browser).
    ========================================================================== */
 
 (function () {
   "use strict";
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Motion is on by default on every screen. We deliberately don't follow the
+  // operating system's "reduce motion" setting (Windows "Animation effects" off
+  // would otherwise hide every animation on PCs); the footer toggle is the
+  // opt-out and is remembered in this browser.
+  const reduce = document.documentElement.classList.contains("reduce-motion");
+
+  function initMotionToggle() {
+    document.querySelectorAll("[data-motion-toggle]").forEach((btn) => {
+      const sync = () => {
+        const off = document.documentElement.classList.contains("reduce-motion");
+        btn.setAttribute("aria-pressed", String(!off));
+        btn.querySelector("[data-motion-state]").textContent = off ? "Off" : "On";
+      };
+      sync();
+      btn.addEventListener("click", () => {
+        const off = !document.documentElement.classList.contains("reduce-motion");
+        try { localStorage.setItem("msb_reduce_motion", off ? "1" : "0"); } catch (e) {}
+        window.location.reload();
+      });
+    });
+  }
 
   // Blocks that get a reveal automatically (value = reveal variant).
   const AUTO = [
@@ -225,6 +246,6 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     initReveal(); initScrollUI(); initCountUp(); initSmoothAnchors();
-    initInView(); initCounters(); initRotator(); initTilt(); initRipple();
+    initInView(); initCounters(); initRotator(); initTilt(); initRipple(); initMotionToggle();
   });
 })();
