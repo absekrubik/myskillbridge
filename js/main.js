@@ -358,11 +358,11 @@
       e.preventDefault();
       if (!UI.validateForm(form)) return;
       const btn = form.querySelector("[type=submit]");
-      UI.setBusy(btn, true, "Sending…");
+      UI.setBusy(btn, true, "Opening your email app…");
       await window.MSB.ContactService.send(Object.fromEntries(new FormData(form)));
       UI.setBusy(btn, false);
       form.reset();
-      UI.toast("Message sent. We'll reply by email.");
+      UI.toast("Your email app has opened with your message. Press Send there to reach us.", "info");
     });
   }
 

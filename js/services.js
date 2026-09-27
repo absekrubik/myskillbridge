@@ -591,10 +591,16 @@
      CONTACT — replace with an email service / API endpoint later
      ====================================================================== */
   const ContactService = {
-    async send(message) {
-      await delay(500);
-      // e.g. return fetch('/api/contact', { method: 'POST', body: JSON.stringify(message) })
-      return { ok: true };
+    EMAIL: "hr@myskillbridge.com.au",
+    /** Static hosting has no mail server, so this opens the visitor's email
+     *  app with the message filled in. Replace with a form service or
+     *  POST /api/contact once the backend exists. */
+    async send(m) {
+      const subject = `[Website] ${m.subject || "Enquiry"} – ${m.fullName || ""}`.trim();
+      const body = [m.message || "", "", "—", `Name: ${m.fullName || ""}`, `Email: ${m.email || ""}`, m.phone ? `Phone: ${m.phone}` : ""]
+        .filter((x, i) => x !== "" || i < 2).join("\n");
+      window.location.href = `mailto:${this.EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return { ok: true, via: "email-app" };
     }
   };
 

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /candidate-dashboard.html
+Disallow: /employer-dashboard.html
+Disallow: /tools/
+
+Sitemap: https://myskillbridge.com.au/sitemap.xml

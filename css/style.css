@@ -762,3 +762,9 @@ fieldset[data-role-fields] { border: 0; padding: 0; margin: 0; min-width: 0; }
 .emp-card__facts dd { margin: 2px 0 0; font-weight: 600; color: var(--navy); font-size: .9rem; }
 .emp-card__notes, .emp-card__empty { margin: 0; font-size: .88rem; color: #475467; background: var(--bg); padding: 10px 12px; border-radius: 10px; }
 .emp-card__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.footer-contact { display: grid; gap: 8px; margin-top: 16px; font-size: .9rem; }
+.footer-contact li { display: flex; gap: 10px; align-items: flex-start; }
+.footer-contact .icon { width: 17px; height: 17px; color: var(--sky); margin-top: 3px; }
+.footer-contact a { color: #D4E1F5; text-decoration: none; }
+.footer-contact a:hover { color: #fff; text-decoration: underline; }
+.contact-item p a { font-weight: 700; }

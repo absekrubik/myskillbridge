@@ -243,4 +243,3 @@ html.reduce-motion .hero__title .hl::after { transform: none; }
 @media (max-width: 900px) {
   .js-reveal [data-reveal="left"], .js-reveal [data-reveal="right"] { transform: translateY(16px); }
 }
-html { overflow-x: clip; }

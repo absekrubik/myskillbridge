@@ -1,4 +1,4 @@
-from partials import icon, page
+from partials import icon, page, CONTACT
 
 
 def page_hero(title, lead, crumbs, buttons="", navy=False):
@@ -227,14 +227,13 @@ def about():
 
 # =================================================================== CONTACT
 def contact():
-    ph = '<span class="placeholder">Placeholder</span>'
-    info = [("i-mail", "Email", f"[email address to be added] {ph}"),
-            ("i-phone", "Phone", f"[phone number to be added] {ph}"),
-            ("i-building", "Office", f"[office address to be added] {ph}"),
-            ("i-clock", "Business hours", f"[business hours to be added] {ph}")]
+    C = CONTACT
+    info = [("i-mail", "Email", f'<a href="mailto:{C["email"]}">{C["email"]}</a>'),
+            ("i-phone", "Phone", f'Office <a href="tel:{C["office_tel"]}">{C["office"]}</a><br>Mobile <a href="tel:{C["mobile_tel"]}">{C["mobile"]}</a>'),
+            ("i-building", "Office", f'{C["street"]}<br>{C["locality"]} {C["region"]} {C["postcode"]}<br><a href="{C["maps"]}" target="_blank" rel="noopener">Get directions</a>')]
     info_html = "".join(f'<div class="contact-item">{icon(ic)}<div><h3>{t}</h3><p>{d}</p></div></div>' for ic, t, d in info)
     body = f'''<main id="main">
-{page_hero("Contact us", "Send us a message and we'll reply by email.", "Contact")}
+{page_hero("Contact us", "Call, email or visit us in Sydney, or send a message and we'll reply by email.", "Contact")}
 <section class="section"><div class="container contact-grid">
   <form class="card" id="contact-form" novalidate aria-labelledby="form-title">
     <h2 id="form-title" style="font-size:1.4rem">Send a message</h2>
@@ -258,7 +257,7 @@ def contact():
     <button class="btn btn--primary" type="submit">Send message</button>
   </form>
   <div class="contact-info" aria-label="Contact details">{info_html}
-    <p class="muted" style="font-size:.85rem">Contact details above are placeholders. Replace them in <code>contact.html</code> before launch.</p>
+    <p class="muted" style="font-size:.85rem">Sending the form opens your email app with your message addressed to us, so you can check it before it goes.</p>
   </div>
 </div></section>
 </main>'''

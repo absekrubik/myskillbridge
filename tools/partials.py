@@ -1,7 +1,32 @@
 """Shared partials for the static site build (header, footer, <head>, icons)."""
 
 SITE = "My SkillBridge Recruitment Services"
-BASE_URL = "https://www.example.com"  # TODO: replace with the real domain before launch
+BASE_URL = "https://myskillbridge.com.au"
+
+# Business contact details (used in the footer, contact page, privacy policy and search data)
+CONTACT = {
+    "email": "hr@myskillbridge.com.au",
+    "office": "(02) 8021 1804", "office_tel": "+61280211804",
+    "mobile": "+61 415 594 328", "mobile_tel": "+61415594328",
+    "street": "Suite 30, Level 3, 104 Bathurst Street", "locality": "Sydney", "region": "NSW", "postcode": "2000",
+}
+CONTACT["address"] = f"{CONTACT['street']}, {CONTACT['locality']} {CONTACT['region']} {CONTACT['postcode']}"
+CONTACT["maps"] = "https://www.google.com/maps/search/?api=1&query=" + CONTACT["address"].replace(" ", "+").replace(",", "%2C")
+
+# Pages that should never appear in search results (private dashboards).
+NOINDEX = {"candidate-dashboard.html", "employer-dashboard.html"}
+
+import hashlib as _hashlib, os as _os
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+
+
+def asset(path):
+    """Adds ?v=<content hash> so browsers fetch a file again whenever it changes."""
+    try:
+        with open(_os.path.join(_ROOT, path), "rb") as f:
+            return f"{path}?v={_hashlib.md5(f.read()).hexdigest()[:8]}"
+    except OSError:
+        return path
 
 ICONS = {
     "i-search": '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
@@ -116,6 +141,11 @@ def footer():
       <div class="footer-brand">
         {logo(variant="footer")}
         <p>A recruitment service connecting skilled candidates with employment opportunities in Australia.</p>
+        <ul class="footer-contact">
+          <li>{icon("i-mail")}<a href="mailto:{CONTACT['email']}">{CONTACT['email']}</a></li>
+          <li>{icon("i-phone")}<span><a href="tel:{CONTACT['office_tel']}">{CONTACT['office']}</a> · <a href="tel:{CONTACT['mobile_tel']}">{CONTACT['mobile']}</a></span></li>
+          <li>{icon("i-pin")}<a href="{CONTACT['maps']}" target="_blank" rel="noopener">{CONTACT['address']}</a></li>
+        </ul>
         <div class="social">
           <a href="#" data-placeholder aria-label="My SkillBridge on Facebook (link to be added)">{icon("i-facebook")}</a>
           <a href="#" data-placeholder aria-label="My SkillBridge on Instagram (link to be added)">{icon("i-instagram")}</a>
@@ -143,8 +173,15 @@ def footer():
 </footer>'''
 
 
+ORG_SCHEMA = f'''
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"EmploymentAgency","name":"{SITE}","url":"{BASE_URL}/","logo":"{BASE_URL}/assets/logo/logo.png","image":"{BASE_URL}/assets/images/og-image.png","slogan":"Connecting talent with opportunities","email":"{CONTACT['email']}","telephone":"{CONTACT['office_tel']}","address":{{"@type":"PostalAddress","streetAddress":"{CONTACT['street']}","addressLocality":"{CONTACT['locality']}","addressRegion":"{CONTACT['region']}","postalCode":"{CONTACT['postcode']}","addressCountry":"AU"}},"areaServed":{{"@type":"Country","name":"Australia"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebSite","name":"{SITE}","url":"{BASE_URL}/","potentialAction":{{"@type":"SearchAction","target":"{BASE_URL}/jobs.html?q={{search_term_string}}","query-input":"required name=search_term_string"}}}}</script>'''
+
+
 def head(filename, title, description):
     url = f"{BASE_URL}/{'' if filename == 'index.html' else filename}"
+    robots = '\n<meta name="robots" content="noindex, nofollow">' if filename in NOINDEX else ""
+    schema = ORG_SCHEMA if filename == "index.html" else ""
     return f'''<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{{if(localStorage.getItem("msb_reduce_motion")==="1")document.documentElement.classList.add("reduce-motion")}}catch(e){{}}</script>
@@ -158,23 +195,27 @@ def head(filename, title, description):
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{BASE_URL}/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="My SkillBridge Recruitment Services — connecting talent with opportunities">
 <meta property="og:locale" content="en_AU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{BASE_URL}/assets/images/og-image.png">
 <link rel="icon" href="assets/logo/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">'''
+<link rel="stylesheet" href="{asset("css/style.css")}">
+<link rel="stylesheet" href="{asset("css/animations.css")}">
+<link rel="stylesheet" href="{asset("css/responsive.css")}">{robots}{schema}'''
 
 
 CORE_JS = ["jobs-data.js", "services.js", "main.js", "animations.js"]
 
 
 def page(filename, title, description, active, body, scripts=(), body_class="", show_footer=True):
-    js = "\n".join(f'<script src="js/{s}" defer></script>' for s in list(CORE_JS) + list(scripts))
+    js = "\n".join(f'<script src="{asset("js/" + s)}" defer></script>' for s in list(CORE_JS) + list(scripts))
     return f'''<!DOCTYPE html>
 <html lang="en-AU">
 <head>

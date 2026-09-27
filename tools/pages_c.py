@@ -1,4 +1,4 @@
-from partials import icon, page
+from partials import icon, page, CONTACT
 from pages_b import page_hero
 
 DEMO_NOTE = f'''<p class="demo-note">{icon("i-lock")}<span><strong>Demo only.</strong> Accounts are stored in this browser for demonstration and are not secure. Don't use a real password. Real sign-in will be handled by a secure server.</span></p>'''
@@ -275,7 +275,7 @@ def privacy():
         ("Sharing your information", ["We share application information with the employer you apply to. We do not sell personal information."]),
         ("Storage and security", ["[Describe where data is stored and the security measures used.]"]),
         ("Access and correction", ["You can view and update your profile in your dashboard, or contact us to request access to or correction of your information."]),
-        ("Contact", ['Questions about privacy can be sent through our <a href="contact.html">contact page</a>.']),
+        ("Contact", [f'Questions or requests about your personal information can be sent to <a href="mailto:{CONTACT["email"]}">{CONTACT["email"]}</a>, by phone on <a href="tel:{CONTACT["office_tel"]}">{CONTACT["office"]}</a>, or by post to My SkillBridge Recruitment Services, {CONTACT["address"]}.']),
     ], "How My SkillBridge Recruitment Services collects, uses and protects personal information.")
 
 
@@ -296,3 +296,28 @@ def disclaimer():
         ("Profile comparison tool", ["The job profile tool provides a general comparison based on information entered by the user. It does not determine employment eligibility, visa eligibility or immigration outcomes."]),
         ("Job listings", ["Listings, including salary information, are supplied by employers or are sample content and may change without notice."]),
     ], "Disclaimer for the My SkillBridge Recruitment Services website.")
+
+
+# ======================================================================= 404
+def not_found():
+    body = f'''<main id="main">
+<section class="section">
+  <div class="container container--narrow" style="text-align:center">
+    <span class="card__icon" style="margin:0 auto 20px">{icon("i-compass")}</span>
+    <h1>We couldn't find that page</h1>
+    <p class="muted" style="font-size:1.1rem;max-width:34em;margin:0 auto 28px">The link may be old or mistyped. Try searching current jobs, or head back to the homepage.</p>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn btn--primary btn--lg" href="/jobs.html">{icon("i-search")}Search jobs</a>
+      <a class="btn btn--ghost btn--lg" href="/">Go to homepage</a>
+    </div>
+  </div>
+</section>
+</main>'''
+    html = page("404.html", "Page not found | My SkillBridge Recruitment Services",
+                "The page you were looking for could not be found.", "", body)
+    # The 404 page can be served from any folder depth, so make its own links absolute.
+    for a in ('href="css/', 'src="js/', 'href="assets/', 'src="assets/', 'href="index.html', 'href="jobs.html', 'href="how-it-works.html',
+              'href="candidates.html', 'href="employers.html', 'href="resources.html', 'href="about.html', 'href="login.html',
+              'href="register.html', 'href="contact.html', 'href="privacy.html', 'href="terms.html', 'href="disclaimer.html'):
+        html = html.replace(a, a[:-len(a.split('"')[1])] + "/" + a.split('"')[1])
+    return html.replace('<meta name="robots" content="noindex, nofollow">', "").replace("</title>", "</title>\n<meta name=\"robots\" content=\"noindex\">", 1)
